@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <label for="bookdate">累進稅率：</label>
+    <input type="text" id="bookdate123">
+    <button type="" id="go">123</button>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+        var taxRateLookup = [
+            {
+                max: 540000,
+                min: 0,
+                number: 0,
+                rate: 0.05,
+            },
+            {
+                max: 1210000,
+                min: 540000,
+                number: 1,
+                rate: 0.12,
+            },
+            {
+                max: 2420000,
+                min: 1210000,
+                number: 2,
+                rate: 0.2,
+            },
+            {
+                max: 4530000,
+                min: 2420000,
+                number: 3,
+                rate: 0.3,
+            },
+            {
+                max: 10310000,
+                min: 4530000,
+                number: 4,
+                rate: 0.4,
+            },
+            {   
+                min: 10310000,
+                max: 99999999999999999999,
+                number: 5,
+                rate: 0.5,
+            },
+        ];
+        $("#go").click(function()  {
+            var money = $("#bookdate123").val();
+            var money0 = (taxRateLookup[0].max - taxRateLookup[0].min) * taxRateLookup[0].rate;
+            var money1 = (taxRateLookup[1].max - taxRateLookup[1].min) * taxRateLookup[1].rate;
+            var money2 = (taxRateLookup[2].max - taxRateLookup[2].min) * taxRateLookup[2].rate;
+            var money3 = (taxRateLookup[3].max - taxRateLookup[3].min) * taxRateLookup[3].rate;
+            var money4 = (taxRateLookup[4].max - taxRateLookup[4].min) * taxRateLookup[4].rate;
+            var money5 = (money - taxRateLookup[5].min) * taxRateLookup[5].rate;  
+            for (var i = 0; i < taxRateLookup.length; i++) {
+                var level = taxRateLookup[i];
+                if (money <= level.max && money > level.min) {
+                    if (level.number == 0) {
+                        alert(money*level.rate);
+                    }
+                    if (level.number == 1) {
+                        alert(money0 + (money-level.min));
+                    }
+                    if (level.number == 2) {
+                        alert(money0 + money1 + (money-level.min)*level.rate);
+                    }
+                    if (level.number == 3) {
+                        alert(money0 + money1 + money2 +(money-level.min)*level.rate);
+                    }
+                    if (level.number == 4) {
+                        alert(money0 + money1 + money2 + money3 + (money-level.min)*level.rate);
+                    }
+                    if (level.number == 5) {
+                        alert(money0 + money1 + money2 + money3 + money4 +(money-level.min)*level.rate);
+                    }
+                }
+            }
+            $("#bookdate123").val("");
+        });
+    </script>
+</body>
+</html>

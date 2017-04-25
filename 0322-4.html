@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <pre><script>
+            var num=Math.floor(Math.random()*10);
+            var play =true;
+            var b=0;
+            while(play)
+            {
+                var guess =prompt("請猜數字!!");
+                
+                b=b+1;
+                document.writeln("你第"+b+"次猜的數字是:"+guess);
+                if(guess==num)
+                {
+                    document.writeln("你猜對了!!!數字是:"+num);
+                    play=false;
+                }
+
+
+            }
+        </script></pre>
+    </body>
+</html>

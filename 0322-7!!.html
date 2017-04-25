@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <div class="123" id="result">
+            
+        </div>
+        
+        <button id="show" >算答案</button>
+        
+
+        <script>
+            document.getElementById("show").onclick=a123;
+            function a123()
+            {
+            var tempc=prompt("請輸入攝氏溫度");
+            var tempf =(tempc*1.8)+32;
+            var text ="攝氏"+tempc+"等於華氏"+tempf;
+            var as23 = document.createElement("h1");
+            as23.innerHTML=text;
+
+
+                document.getElementById("result").appendChild(as23);
+            }
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <label for="bookdate">日期：</label>
+    <input type="date" id="bookdate123">
+    <button type="" onclick="a1();">123</button>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    
+    
+
+    <script>
+         
+        var day = 0;
+        var mouthaa = 0;
+
+        function a1() {
+            var a = document.getElementById("bookdate123");
+            day = new Date(a.value).getDate();
+            if (day > 9) {
+                var dayqq = day.toString();
+                var daynum = parseInt(dayqq[0]) + parseInt(dayqq[1]);
+            } else {
+                var dayqq = day.toString();
+                var daynum = parseInt(dayqq[0]);
+            }
+
+
+            var mouth1 = new Date(a.value).getMonth();
+            mouthaa = mouth1 + 1;
+            if (mouthaa > 9) {
+                var mouthqq = mouthaa.toString();
+                var mouthnum = parseInt(mouthqq[0]) + parseInt(mouthqq[1]);
+            } else {
+                var mouthqq = mouthaa.toString();
+                var mouthnum = parseInt(mouthqq[0]);
+            }
+
+
+            var yearaa = new Date(a.value).getFullYear();
+            var yearqq = yearaa.toString();
+            var yearnum = parseInt(yearqq[0]) + parseInt(yearqq[1]) + parseInt(yearqq[2]) + parseInt(yearqq[3]);
+
+
+            var life = daynum + mouthnum + yearnum;
+            if (life > 9) {
+                var lifeaa = life.toString();
+                var lifeqq = parseInt(lifeaa[0]) + parseInt(lifeaa[1]);
+                if (lifeqq > 9) {
+                    var lifecc = lifeqq.toString();
+                    var lifenum = parseInt(lifecc[0]) + parseInt(lifecc[1]);
+
+                } else {
+                    var lifenum = lifeqq;
+
+                }
+            } else {
+                var lifenum = life;
+            }
+
+            var star= a2(star);
+             var url = "https://gist.githubusercontent.com/dinowang/5290d4cebf96a666c29ab0878afeb2f1/raw/9516581cb54154d070cf287ebd31d9bce217a495/" + star + ".json";
+             $.ajax({
+                type:"GET",
+                url:url,
+                data:null,
+                dataType:"json",
+                error:function(result,status,xhr){
+                    alert("取不到資料!!!");
+
+                },
+                success:function(result,status,xhr){
+                    
+                    alert(result.name +"，你的生命靈數是:" + lifenum +"介紹:"+ result.lookup[lifenum-1]);
+
+                },
+
+
+            });
+
+            // alert(horoscopeData[star].name +"，你的生命靈數是:" + lifenum +"介紹:"+ horoscopeData[star].lookup[lifenum-1]);
+            
+          
+
+            //   var z =horoscopeData[star][lifenum];
+
+
+
+        }
+
+        function a2(star) {
+            var choose = mouthaa * 100 + day;
+            if (choose <= 219 && choose >= 121) {
+
+                return "aquarius";
+
+            } else if (choose <= 320 && choose >= 220) {
+                return "pisces";
+
+            } else if (choose <= 419 && choose >= 321) {
+                return "aries";
+
+            } else if (choose <= 520 && choose >= 420) {
+                return "taurus";
+
+            } else if (choose <= 621 && choose >= 521) {
+                return "gemini";
+
+            } else if (choose <= 722 && choose >= 622) {
+                return "cancer";
+
+            } else if (choose <= 822 && choose >= 723) {
+                return "leo";
+
+            } else if (choose <= 922 && choose >= 823) {
+                return "virgo";
+
+            } else if (choose <= 1023 && choose >= 923) {
+                return "libra";
+
+            } else if (choose <= 1121 && choose >= 1024) {
+                return "scorpio";
+
+            } else if (choose <= 1220 && choose >= 1122) {
+
+                return "sagittarius";
+
+            } else if(choose <= 120 || choose >= 1221){
+                return "capricorn";
+
+            }
+        }
+    </script>
+</body>
+
+</html>

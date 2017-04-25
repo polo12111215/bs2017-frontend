@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+         <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body>
+
+   
+
+    <div class="container-fluid">
+        <div class="row">
+           
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+                <label>
+            <input type="radio" name="convert-to" value="f" id="convertc">攝氏轉華氏
+        </label>
+                <label>
+            <input type="radio" name="convert-to" value="c"id="convertf">華氏轉攝氏
+        </label>
+                <br>
+                <div class="row">
+
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                        <div class="btn-group-vertical btn-block" role="group" aria-label="...">
+                            <a class="btn btn-default" href="#" role="button" onclick="a0(1);return false; ">1</a>
+                            <a class="btn btn-default" href="#" role="button"onclick="a0(4);return false; ">4</a>
+                            <a class="btn btn-default" href="#" role="button"onclick="a0(7);return false; ">7</a>
+                            <a class="btn btn-default" href="#" role="button"onclick="a0(0);return false; ">0</a>
+
+                        </div>
+
+                    </div>
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                        <div class="btn-group-vertical btn-block" role="group" aria-label="...">
+                            <a class="btn btn-default " href="#" role="button"onclick="a0(2);return false; ">2</a>
+                            <a class="btn btn-default" href="#" role="button"onclick="a0(5);return false; ">5</a>
+                            <a class="btn btn-default" href="#" role="button"onclick="a0(8);return false; ">8</a>
+                            <a class="btn btn-default" href="#" role="button"onclick="a0('.');return false; ">.</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                        <div class="btn-group-vertical btn-block" role="group" aria-label="...">
+                            <a class="btn btn-default" href="#" role="button"onclick="a0(3);return false; ">3</a>
+                            <a class="btn btn-default" href="#" role="button"onclick="a0(6);return false; ">6</a>
+                            <a class="btn btn-default" href="#" role="button"onclick="a0(9);return false; ">9</a>
+
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="ch" aria-label="...">
+                    <div class="input-group-btn">
+                        <a class="btn btn-group-vertical" href="#" role="button" onclick="docal();return false;">轉換</a>
+                        <a class="btn btn-group-vertical" href="#" role="button" onclick="doclr();return false;">清除</a>
+                    </div>
+                </div>
+                <br>
+
+                <div class="input-group">
+                    <span class="input-group-addon">結果</span>
+                    <input type="text" class="form-control" id="an">
+
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')
+        function a0(num) {
+             var ch = document.getElementById("ch");
+            ch.value+=num;
+        }
+        //  function a1() {
+        //      var ch = document.getElementById("ch");
+        //     ch.value+=".";
+        // }
+        
+
+        function doclr() {
+            var ch = document.getElementById("ch");
+            var an = document.getElementById("an");
+            var convertc = document.getElementById("convertc");
+            var convertf = document.getElementById("convertf");
+            ch.value = "";
+            an.value = "";
+            convertc.checked = false;
+            convertc.checked = false;
+
+        }
+
+        function docal() {
+            var ch = document.getElementById("ch");
+            var an = document.getElementById("an");
+            var convertc = document.getElementById("convertc");
+            var convertf = document.getElementById("convertf");
+            if (convertc.checked) {
+                var bb = (ch.value * 1.8) + 32;
+                an.value = "攝氏" + ch.value + "等於華氏" + bb;
+            }
+            if (convertf.checked) {
+                var bb = (ch.value - 32) / 1.8;
+                an.value = "華氏" + ch.value + "等於攝氏" + bb;
+            }
+
+        }
+    </script>
+    
+
+
+</body>
+</html>
